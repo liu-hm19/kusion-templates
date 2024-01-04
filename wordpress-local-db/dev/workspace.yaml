@@ -1,3 +1,8 @@
 runtimes: 
   kubernetes: 
     kubeConfig: /etc/kubeconfig.yaml # Replace with your own kubeconfig file path
+
+modules: 
+  mysql: 
+    default: 
+      suffix: "-mysql" # The suffix of mysql database name

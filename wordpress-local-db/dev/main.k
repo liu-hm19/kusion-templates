@@ -11,9 +11,9 @@ import catalog.models.schema.v1.accessories.mysql
             {{ .AppName }}: c.Container {
                 image: "{{ .Image }}"
                 env: {
-                    "WORDPRESS_DB_HOST": "$(KUSION_DB_HOST_WORDPRESS)"
-                    "WORDPRESS_DB_USER": "$(KUSION_DB_USERNAME_WORDPRESS)"
-                    "WORDPRESS_DB_PASSWORD": "$(KUSION_DB_PASSWORD_WORDPRESS)"
+                    "WORDPRESS_DB_HOST": "$(KUSION_DB_HOST_WORDPRESS_MYSQL)"
+                    "WORDPRESS_DB_USER": "$(KUSION_DB_USERNAME_WORDPRESS_MYSQL)"
+                    "WORDPRESS_DB_PASSWORD": "$(KUSION_DB_PASSWORD_WORDPRESS_MYSQL)"
                     "WORDPRESS_DB_NAME": "mysql"
                 }
             }

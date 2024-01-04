@@ -1,0 +1,3 @@
+runtimes: 
+  kubernetes: 
+    kubeConfig: /etc/kubeconfig.yaml # Replace with your own kubeconfig file path

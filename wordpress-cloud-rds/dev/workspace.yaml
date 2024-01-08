@@ -1,0 +1,37 @@
+runtime: 
+  kubernetes:
+    kubeConfig: /etc/kubeconfig.yaml # Replace with your own kubeconfig file path
+  terraform: 
+    random: 
+      version: 3.5.1
+      source: hashicorp/random
+    aws: 
+      version: 5.0.1
+      source: hashicorp/aws
+      region: us-east-1
+    alicloud: 
+      version: 1.209.1
+      source: aliyun/alicloud
+      region: cn-beijing
+
+# MySQL configurations for AWS RDS
+modules: 
+  mysql: 
+    default: 
+      cloud: aws
+      size: 20
+      instanceType: db.t3.micro
+      privateRouting: false
+      suffix: "-mysql"
+
+# MySQL configurations for Alicloud RDS
+# modules: 
+#   mysql: 
+#     default: 
+#       cloud: alicloud
+#       size: 20
+#       instanceType: mysql.n2.serverless.1c
+#       category: serverless_basic
+#       privateRouting: false
+#       subnetID: [your-subnet-id]
+#       suffix: "-mysql"

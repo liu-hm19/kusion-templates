@@ -1,12 +1,8 @@
 import catalog.models.schema.v1 as ac
-import catalog.models.schema.v1.trait as t
 import catalog.models.schema.v1.workload as wl
 import catalog.models.schema.v1.workload.container as c
-import catalog.models.schema.v1.workload.container.probe as p
-import catalog.models.schema.v1.workload.secret as sec
 import catalog.models.schema.v1.workload.network as n
-import catalog.models.schema.v1.monitoring as m
-import catalog.models.schema.v1.accessories.database as db
+import catalog.models.schema.v1.accessories.mysql
 
 # main.k declares reusable configurations for dev stacks.
 {{ .AppName }}: ac.AppConfiguration {
@@ -15,9 +11,9 @@ import catalog.models.schema.v1.accessories.database as db
             {{ .AppName }}: c.Container {
                 image = "wordpress:6.3"
                 env: {
-                    "WORDPRESS_DB_HOST": "$(KUSION_DB_HOST)"
-                    "WORDPRESS_DB_USER": "$(KUSION_DB_USERNAME)"
-                    "WORDPRESS_DB_PASSWORD": "$(KUSION_DB_PASSWORD)"
+                    "WORDPRESS_DB_HOST": "$(KUSION_DB_HOST_WORDPRESS_MYSQL)"
+                    "WORDPRESS_DB_USER": "$(KUSION_DB_USERNAME_WORDPRESS_MYSQL)"
+                    "WORDPRESS_DB_PASSWORD": "$(KUSION_DB_PASSWORD_WORDPRESS_MYSQL)"
                     "WORDPRESS_DB_NAME": "mysql"
                 }
                 resources: {
@@ -33,11 +29,10 @@ import catalog.models.schema.v1.accessories.database as db
             }
         ]
     }
-    database: db.Database {
-        type: "aws"
-        engine: "MySQL"
-        version: "8.0"
-        size: 20
-        instanceType: "db.t3.micro"
+    database: {
+        {{ .AppName }}: mysql.MySQL {
+            type: "cloud"
+            version: "8.0"
+        }
     }
 }

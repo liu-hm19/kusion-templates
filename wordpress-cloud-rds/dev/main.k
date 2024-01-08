@@ -9,7 +9,7 @@ import catalog.models.schema.v1.accessories.mysql
     workload: wl.Service {
         containers: {
             {{ .AppName }}: c.Container {
-                image = "wordpress:6.3"
+                image: "{{ .Image }}"
                 env: {
                     "WORDPRESS_DB_HOST": "$(KUSION_DB_HOST_WORDPRESS_MYSQL)"
                     "WORDPRESS_DB_USER": "$(KUSION_DB_USERNAME_WORDPRESS_MYSQL)"

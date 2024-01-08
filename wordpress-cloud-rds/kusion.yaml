@@ -7,9 +7,9 @@ projectFields:
     type: string
     default: wordpress
   - name: ProjectName
-    description: The Project Name. Default to 'wordpress'.
+    description: The Project Name. Default to 'wordpress-cloud-rds'.
     type: string
-    default: wordpress
+    default: wordpress-cloud-rds
 stacks:
   - name: dev
     fields:
